@@ -50,6 +50,16 @@
                                 <h4>{{ $post->post_title }}</h4>
                                 <img src="{{ $post->post_image }}" alt="">
                                 <p>{{ $post->post_body }}</p>
+
+                                <ul class="nav nav-pills">
+                                    <li role="presentation">
+                                        <a href="">
+                                            <span>VIEW</span>
+                                        </a>
+                                    </li>
+                                </ul>
+
+                                <cite style="float:left;">Posted on: {{ date('M j, Y H:i', strtotime($post->update_at)) }}</cite>
                                 @endforeach
                         @else
                             <p>No Post Available</p>
