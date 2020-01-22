@@ -44,7 +44,17 @@
                     @endif
                         
                     </div>
-                    <div class="col-md-8"></div>
+                    <div class="col-md-8">
+                        @if(count($posts) > 0)
+                            @foreach($posts->all() as $post)
+                                <h4>{{ $post->post_title }}</h4>
+                                <img src="{{ $post->post_image }}" alt="">
+                                <p>{{ $post->post_body }}</p>
+                                @endforeach
+                        @else
+                            <p>No Post Available</p>
+                        @endif
+                    </div>
 
                 </div>
             </div>
