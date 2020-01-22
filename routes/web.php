@@ -35,3 +35,5 @@ Route::get('/view/{id}', 'PostController@view');
 
 Route::get('/edit/{id}', 'PostController@edit');
 
+Route::post('/editPost/{id}', 'PostController@editPost');
+
