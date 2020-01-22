@@ -49,12 +49,22 @@
                             @foreach($posts->all() as $post)
                                 <h4>{{ $post->post_title }}</h4>
                                 <img src="{{ $post->post_image }}" alt="">
-                                <p>{{ $post->post_body }}</p>
+                                <p>{{ substr($post->post_body, 0, 150) }}</p>
 
                                 <ul class="nav nav-pills">
                                     <li role="presentation">
-                                        <a href="">
-                                            <span>VIEW</span>
+                                        <a href='{{ url("/view/{$post->id}") }}'>
+                                            <span class="fas fa-eye">VIEW COMPLETE ARTICLE</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href='{{ url("/edit/{$post->id}") }}'>
+                                            <span class="fas fa-edit">EDIT</span>
+                                        </a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href='{{ url("/delete/{$post->id}") }}'>
+                                            <span class="fas fa-trash-alt">DELETE</span>
                                         </a>
                                     </li>
                                 </ul>

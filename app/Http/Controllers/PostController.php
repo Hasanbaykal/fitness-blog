@@ -40,4 +40,12 @@ class PostController extends Controller
         return redirect('/home')->
         with('response', 'Post Added Successfully');
     }
+
+    public function view($post_id){
+        return $post_id;
+    }
+
+    public function edit($post_id){
+        return $post_id;
+    }
 }
