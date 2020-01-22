@@ -69,7 +69,7 @@
                                     </li>
                                 </ul>
 
-                                <cite style="float:left;">Posted on: {{ date('M j, Y H:i', strtotime($post->update_at)) }}</cite>
+                                <cite style="float:left;">Posted on: {{ date('M j, Y H:i', strtotime($post->updated_at)) }}</cite>
                                 @endforeach
                         @else
                             <p>No Post Available</p>
