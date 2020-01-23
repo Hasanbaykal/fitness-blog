@@ -74,6 +74,7 @@
                                             <span class="fas fa-eye">VIEW COMPLETE ARTICLE</span>
                                         </a>
                                     </li>
+                                    @if(Auth::id() == 3)                                  
                                     <li role="presentation">
                                         <a href='{{ url("/edit/{$post->id}") }}'>
                                             <span class="fas fa-edit">EDIT</span>
@@ -84,6 +85,7 @@
                                             <span class="fas fa-trash-alt">DELETE</span>
                                         </a>
                                     </li>
+                                    @endif
                                 </ul>
 
                                 <cite style="float:left;">Posted on: {{ date('M j, Y H:i', strtotime($post->updated_at)) }}</cite>

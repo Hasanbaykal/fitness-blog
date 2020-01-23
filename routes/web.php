@@ -19,13 +19,13 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/post', 'PostController@post');
+Route::get('/post', 'PostController@post')->middleware('auth');
 
-Route::get('/profile', 'ProfileController@profile');
+Route::get('/profile', 'ProfileController@profile')->middleware('auth');
 
-Route::get('/category', 'CategoryController@category');
+Route::get('/category', 'CategoryController@category')->middleware('auth');
 
-Route::post('/addCategory', 'CategoryController@addCategory');
+Route::post('/addCategory', 'CategoryController@addCategory')->middleware('auth');
 
 Route::post('/addProfile', 'ProfileController@addProfile');
 
