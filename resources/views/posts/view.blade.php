@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header text-center">Complete Article</div>
+                <div class="card-header text-center">Post View</div>
 
                 <div class="panel-body mb-3 mt-3">
                     <div class="col-md-4">
