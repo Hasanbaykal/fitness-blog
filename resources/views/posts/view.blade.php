@@ -4,6 +4,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        @if(session('response'))
+                    <div class="alert alert-success">{{session('response')}}</div>
+                @endif
             <div class="card">
                 <div class="card-header text-center">Post View</div>
 
@@ -54,8 +57,28 @@
                         @else
                             <p>No Post Available</p>
                         @endif
-                    </div>
 
+                        <form method="POST" action='{{ url("/comment/{$post->id}") }}'>
+                        @csrf
+                            <div class="form-group">
+                                <textarea id="comment" rows="6" class="form-control" name="comment" required autofocus></textarea>
+                            </div>
+                            <div class="form-group">
+                            <button type="submit" class="btn btn-success"> Post Comment</button>
+                            </div>
+                        </form>
+
+                        <h3>Comments</h3>
+                        @if(count($comments) > 0)
+                            @foreach($comments->all() as $comment)
+                                <p>{{ $comment->comment }}</p>
+                                <p>Posted by: {{ $comment->name }}</p>
+                                </hr>
+                        @endforeach
+                        @else
+                            <p>No Comment Available</p>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>
