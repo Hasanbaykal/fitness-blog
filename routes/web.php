@@ -39,3 +39,5 @@ Route::post('/editPost/{id}', 'PostController@editPost');
 
 Route::get('/delete/{id}', 'PostController@deletePost');
 
+Route::get('/category/{id}', 'PostController@category');
+

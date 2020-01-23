@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\DB;
 use App\Category;
 use App\Post;
 use Auth;
@@ -90,5 +91,15 @@ class PostController extends Controller
     public function deletePost($post_id){
         Post::where('id', $post_id)->delete();
         return redirect('/home')->with('response', 'Post Deleted Successfully');
+    }
+
+    public function category($cat_id){
+        $categories = Category::all();
+        $posts = DB::table('posts')
+            ->join('categories', 'posts.category_id', '=', 'categories.id')
+            ->select('posts.*', 'categories.*')
+            ->where(['categories.id' => $cat_id])
+            ->get();
+        return view('categories.categoriesposts', ['categories' => $categories, 'posts' => $posts]);
     }
 }
