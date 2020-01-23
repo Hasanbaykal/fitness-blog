@@ -11,6 +11,7 @@ use App\Post;
 use App\Like;
 use App\Dislike;
 use App\Comment;
+use App\Profile;
 use Auth;
 
 class PostController extends Controller
@@ -163,5 +164,13 @@ class PostController extends Controller
         $comment->comment = $request->input('comment');
         $comment->save();
         return redirect("/view/{$post_id}")->with('response', 'Comment Added Successfully');
+    }
+
+    public function search(Request $request){
+        $user_id = Auth::user()->id;
+        $profile = Profile::find($user_id);
+        $keyword = $request->input('search');
+        $posts = Post::where('post_title', 'LIKE', '%'.$keyword.'%')->orWhere('post_body', 'LIKE', '%'.$keyword.'%')->get();
+        return view('posts.searchposts', ['profile' => $profile, 'posts' => $posts]);
     }
 }

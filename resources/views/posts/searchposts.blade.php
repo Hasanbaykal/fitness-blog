@@ -92,9 +92,7 @@
                             <p>No Post Available</p>
                         @endif
 
-                        {{ $posts->links() }}
                     </div>
-
                 </div>
             </div>
         </div>
