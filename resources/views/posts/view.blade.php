@@ -35,12 +35,12 @@
                                 <ul class="nav nav-pills">
                                     <li role="presentation">
                                         <a href='{{ url("/like/{$post->id}") }}'>
-                                            <span class="fas fa-thumbs-up">LIKE ()</span>
+                                            <span class="fas fa-thumbs-up">LIKE ({{ $likeCtr }})</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
                                         <a href='{{ url("/dislike/{$post->id}") }}'>
-                                            <span class="fas fa-thumbs-down">DISLIKE ()</span>
+                                            <span class="fas fa-thumbs-down">DISLIKE ({{ $dislikeCtr }})</span>
                                         </a>
                                     </li>
                                     <li role="presentation">
