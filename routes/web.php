@@ -27,24 +27,24 @@ Route::get('/category', 'CategoryController@category')->middleware('auth');
 
 Route::post('/addCategory', 'CategoryController@addCategory')->middleware('auth');
 
-Route::post('/addProfile', 'ProfileController@addProfile');
+Route::post('/addProfile', 'ProfileController@addProfile')->middleware('auth');
 
-Route::post('/addPost', 'PostController@addPost');
+Route::post('/addPost', 'PostController@addPost')->middleware('auth');
 
-Route::get('/view/{id}', 'PostController@view');
+Route::get('/view/{id}', 'PostController@view')->middleware('auth');
 
-Route::get('/edit/{id}', 'PostController@edit');
+Route::get('/edit/{id}', 'PostController@edit')->middleware('auth');
 
-Route::post('/editPost/{id}', 'PostController@editPost');
+Route::post('/editPost/{id}', 'PostController@editPost')->middleware('auth');
 
-Route::get('/delete/{id}', 'PostController@deletePost');
+Route::get('/delete/{id}', 'PostController@deletePost')->middleware('auth');
 
-Route::get('/category/{id}', 'PostController@category');
+Route::get('/category/{id}', 'PostController@category')->middleware('auth');
 
-Route::get('/like/{id}', 'PostController@like');
+Route::get('/like/{id}', 'PostController@like')->middleware('auth');
 
-Route::get('/dislike/{id}', 'PostController@dislike');
+Route::get('/dislike/{id}', 'PostController@dislike')->middleware('auth');
 
-Route::post('/comment/{id}', 'PostController@comment');
+Route::post('/comment/{id}', 'PostController@comment')->middleware('auth');
 
-Route::post('/search', 'PostController@search');
+Route::post('/search', 'PostController@search')->middleware('auth');

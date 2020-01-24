@@ -173,4 +173,5 @@ class PostController extends Controller
         $posts = Post::where('post_title', 'LIKE', '%'.$keyword.'%')->orWhere('post_body', 'LIKE', '%'.$keyword.'%')->get();
         return view('posts.searchposts', ['profile' => $profile, 'posts' => $posts]);
     }
+    
 }

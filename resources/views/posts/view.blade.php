@@ -26,6 +26,22 @@
                     </ul>
                 </div>
 
+                <div class="form-group row">
+                <label for="" class="col-md-4 col-form-label text-md-right"></label>
+                <div class="col-md-6">
+                    <div class="custom-control custom-switch">
+                        <input type="checkbox" value="0" name="visible" checked hidden>
+                        <input type="checkbox" value="1" class="custom-control-input @error('visible') is-invalid @enderror" id="visible" name="visible">
+                        <label class="custom-control-label" for="visible">Visible to public</label>
+                    </div>
+                    @error('visible')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+            </div>
+
                 <div class="panel-body mb-3 mt-3">
                     <div class="col-md-8">
                         @if(count($posts) > 0)
