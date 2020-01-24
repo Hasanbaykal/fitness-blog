@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
+
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
@@ -75,6 +77,10 @@
                             </div>
                         </div>
 
+Vissible: <input type="checkbox" data-id="{{ $posts->id }}" name="status" class="js-switch" {{ $posts->status == 1
+  ? 'checked' : '' }}>
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary btn-large">
@@ -89,4 +95,40 @@
         </div>
     </div>
 </div>
+
+<script>let elems = Array.prototype.slice.call(document.querySelectorAll('.js-switch'));
+
+elems.forEach(function(html) {
+    let switchery = new Switchery(html,  { size: 'small' });
+});</script>
+
+
+<script>
+    
+$(document).ready(function(){
+    $('.js-switch').change(function () {
+        let status = $(this).prop('checked') === true ? 1 : 0;
+        let postId = $(this).data('id');
+        $.ajax({
+            type: "GET",
+            dataType: "json",
+            url: '{{ route('post.update.status') }}',
+            data: {'status': status, 'post_id': postId},
+            success: function (data) {
+    toastr.options.closeButton = true;
+    toastr.options.closeMethod = 'fadeOut';
+    toastr.options.closeDuration = 100;
+    toastr.success(data.message);
+
+            }
+        });
+    });
+});
+
+
+
+
+
+
+</script>
 @endsection

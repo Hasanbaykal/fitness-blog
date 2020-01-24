@@ -74,12 +74,15 @@ class PostController extends Controller
             'post_body' => 'required',
             'category_id' => 'required',
             'post_image' => 'required',
+      
         ]);
         $posts = new Post;
         $posts->post_title = $request->input('post_title');
         $posts->user_id = Auth::user()->id;
         $posts->post_body = $request->input('post_body');
         $posts->category_id = $request->input('category_id');
+   
+
 
         if(request()->has('post_image')){
             $file = request()->file('post_image');
@@ -100,6 +103,18 @@ class PostController extends Controller
         return redirect('/home')->
         with('response', 'Post Updated Successfully');
     }
+
+public function updateStatus(Request $request)
+{
+    $user = Post::findOrFail($request->post_id);
+    $user->status = $request->status;
+    $user->save();
+
+    return response()->json(['message' => 'Post status updated successfully.']);
+}
+
+
+
 
     public function deletePost($post_id){
         Post::where('id', $post_id)->delete();
