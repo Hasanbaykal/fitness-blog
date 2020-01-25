@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/post', 'PostController@post')->middleware('auth');
+Route::get('/invisibles', 'HomeController@vis')->middleware('auth');
 
 Route::get('/profile', 'ProfileController@profile')->middleware('auth');
 
