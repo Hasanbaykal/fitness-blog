@@ -17,7 +17,7 @@ use Auth;
 class PostController extends Controller
 {
     public function post(){
-        $categories = Category::all();
+        $categories = Category::with('categories')->get();
         return view('posts.post', ['categories' => $categories]);
     }
 
@@ -188,5 +188,4 @@ public function updateStatus(Request $request)
         $posts = Post::where('post_title', 'LIKE', '%'.$keyword.'%')->orWhere('post_body', 'LIKE', '%'.$keyword.'%')->get();
         return view('posts.searchposts', ['profile' => $profile, 'posts' => $posts]);
     }
-    
 }

@@ -20,4 +20,13 @@ class CategoryController extends Controller
         $category->save();
         return redirect('/category')->with('response', 'Category Added Succesfully');
     }
+    
+    /*public function postCount() {
+        return $this->hasMany('App\Post')
+            ->selectRaw('categories.category, count(*) AS aggregate')
+            ->groupBy('categories.category');
+            $categoriesCount = Category::with('postCount')->get(); 
+            $avgPosts = $categoriesCount->sum('postCount') / $categoriesCount->count();
+            return view('categories.category', ['categoriesCount' => $categoriesCount, 'avgPosts' => $avgPosts]);
+    }*/
 }
